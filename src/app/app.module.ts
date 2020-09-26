@@ -12,6 +12,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ROOT_REDUCERS } from './app.reducer';
 import { metaReducers } from './meta.reducer';
+import { ApiService } from './core/services/api.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { metaReducers } from './meta.reducer';
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

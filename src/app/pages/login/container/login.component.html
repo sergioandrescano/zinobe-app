@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row justify-content-center p-5">
+        <div class="col-6" *ngIf="!signUp">
+            <app-sign-in (register)="signUp = !signUp"></app-sign-in>
+        </div>
+        <div class="col-8" *ngIf="signUp">
+            <app-sign-up (login)="signUp = !signUp"></app-sign-up>
+        </div>
+    </div>
+</div>
+<app-loader></app-loader>
