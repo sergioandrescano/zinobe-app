@@ -21,4 +21,8 @@ export class ApiService {
   authentication(user: User): Observable<HttpResponse<any>> {
     return this.httpClient.post<any>(`${this.baseUrl}/users/authentication`, user, { observe: 'response' });
   }
+
+  createCustomer(user: User): Observable<HttpResponse<any>> {
+    return this.httpClient.post<any>(`${this.baseUrl}/users`, user, { observe: 'response' });
+  }
 }

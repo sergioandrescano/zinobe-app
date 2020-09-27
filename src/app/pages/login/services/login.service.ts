@@ -17,6 +17,10 @@ export class LoginService {
   authentication(user: User){
     this.store.dispatch(fromActions.Authentication({user}));
   }
+  
+  createCustomer(user: User){
+    this.store.dispatch(fromActions.CreateCustomer({user}));
+  }
 
   clearState(){
     this.store.dispatch(fromActions.ClearState());

@@ -22,18 +22,35 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(LoginActions.Authentication, (state, {user}) => ({
+  on(LoginActions.Authentication, (state, { user }) => ({
     ...state,
     user,
     isLoading: true
   })),
-  on(LoginActions.AuthenticationSuccess, (state, {user}) => ({
+  on(LoginActions.AuthenticationSuccess, (state, { user }) => ({
     ...state,
     user,
     isLoading: false,
     islogged: true
   })),
-  on(LoginActions.AuthenticationFailure, (state, {error}) => ({
+  on(LoginActions.AuthenticationFailure, (state, { error }) => ({
+    ...state,
+    user: null,
+    isLoading: false,
+    islogged: false,
+    error
+  })),
+  on(LoginActions.CreateCustomer, (state, { user }) => ({
+    ...state,
+    isLoading: true
+  })),
+  on(LoginActions.CreateCustomerSuccess, (state, { user }) => ({
+    ...state,
+    user,
+    isLoading: false,
+    islogged: false
+  })),
+  on(LoginActions.CreateCustomerFailure, (state, { error }) => ({
     ...state,
     user: null,
     isLoading: false,

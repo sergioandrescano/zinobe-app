@@ -25,6 +25,19 @@ export class LoginEffects {
     );
   });
 
+  createCustomer$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(LoginActions.CreateCustomer),
+      concatMap((props) => this.apiService.createCustomer(props.user).pipe(
+        map(response => {
+          if (response.status === 201)
+            return LoginActions.CreateCustomerSuccess({ user: response.body.user });
+        }),
+        catchError(error => of(LoginActions.CreateCustomerFailure({ error }))))
+      )
+    );
+  });
+
   authenticationSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(LoginActions.AuthenticationSuccess),

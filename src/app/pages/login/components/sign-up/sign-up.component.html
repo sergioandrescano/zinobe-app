@@ -1,72 +1,51 @@
-<!-- <form class="text-center border border-light p-5">
-  <p class="h4 mb-4">Registrarse</p>
-  <div class="form-row mb-4">
-    <div class="col">
-      <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
-    </div>
-    <div class="col">
-      <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
-    </div>
-  </div>
-  <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
-  <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
-    aria-describedby="defaultRegisterFormPasswordHelpBlock">
-  <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-    At least 8 characters and 1 digit
-  </small>
-  <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
-    aria-describedby="defaultRegisterFormPhoneHelpBlock">
-  <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-    Optional - for two-step authentication
-  </small>
-  <button mdbBtn color="info" block="true" class="my-4" type="submit">Registrarse</button>
-  <button mdbBtn color="info" block="true" class="my-4" type="button" (click)="login.emit()">Volver al Login</button>
-</form> -->
-
 <mdb-card>
   <mdb-card-body>
-    <!-- Material form register -->
-    <form [formGroup]="cardForm">
+    <form [formGroup]="form">
       <p class="h4 text-center py-4">Registro</p>
 
-      <!-- Material input text -->
       <div class="md-form">
-        <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
-        <input type="text" id="materialFormCardNameEx" formControlName="materialFormCardNameEx" class="form-control" mdbInput>
-        <label for="materialFormCardNameEx" class="font-weight-light">Your name</label>
+        <input type="text" id="name" formControlName="name" class="form-control" mdbInput mdbValidate>
+        <label for="name" class="font-weight-light">Nombres</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
       </div>
 
-      <!-- Material input email -->
       <div class="md-form">
-        <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
-        <input type="email" id="materialFormCardEmailEx" formControlName="materialFormCardEmailEx" class="form-control" mdbInput>
-        <label for="materialFormCardEmailEx" class="font-weight-light">Your email</label>
+        <input type="text" id="documentNumber" formControlName="documentNumber" class="form-control" mdbInput mdbValidate>
+        <label for="documentNumber" class="font-weight-light">Número de documento</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
       </div>
 
-      <!-- Material input email -->
       <div class="md-form">
-        <mdb-icon fas icon="exclamation-triangle" class="prefix grey-text"></mdb-icon>
-        <input type="email" id="materialFormCardConfirmEx" formControlName="materialFormCardConfirmEx" class="form-control" mdbInput>
-        <label for="materialFormCardConfirmEx" class="font-weight-light">Confirm your email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" mdbInput mdbValidate>
+        <label for="email" class="font-weight-light">Correo electrónico</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
       </div>
 
-      <!-- Material input password -->
       <div class="md-form">
-        <mdb-icon icon="lock" class="prefix grey-text"></mdb-icon>
-        <input type="password" id="materialFormCardPasswordEx" formControlName="materialFormCardPasswordEx" class="form-control"
-          mdbInput>
-        <label for="materialFormCardPasswordEx" class="font-weight-light">Your password</label>
+        <input type="text" id="username" formControlName="username" class="form-control" mdbInput mdbValidate>
+        <label for="username" class="font-weight-light">Usuario</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
+      </div>
+
+      <div class="md-form">
+        <input type="password" id="password" formControlName="password" class="form-control" mdbInput mdbValidate>
+        <label for="password" class="font-weight-light">Contraseña</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
       </div>
 
       <div class="text-center py-4 mt-3">
-        <button mdbBtn color="cyan" class="waves-light" type="submit" mdbWavesEffect>Register</button>
+        <button mdbBtn color="cyan" class="waves-light" type="submit" mdbWavesEffect (click)="submitForm()">Register</button>
       </div>
     </form>
     <div class="modal-footer mx-5 pt-3 mb-1">
       <p class="font-small grey-text d-flex justify-content-end">
-          <a class="blue-text ml-1" (click)="login.emit()"> Volver al login</a>
+        <a class="blue-text ml-1" (click)="login.emit()"> Volver al login</a>
       </p>
-  </div>
-    <!-- Material form register -->
+    </div>
   </mdb-card-body>
 </mdb-card>

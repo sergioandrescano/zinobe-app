@@ -1,8 +1,9 @@
 export interface User {
-    role: string;
     _id: string;
+    role: string;
     name: string;
-    username: string;
     email: string;
+    username: string;
     password: string;
+    documentNumber: string;
 }

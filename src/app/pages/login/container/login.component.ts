@@ -24,4 +24,8 @@ export class LoginComponent implements OnInit {
     this.service.authentication(user);
   }
 
+  createCustomer(user: User) {
+    this.service.createCustomer(user);
+  }
+
 }
