@@ -8,10 +8,14 @@ export const Authentication = createAction(
 
 export const AuthenticationSuccess = createAction(
   '[Login] Authentication Success',
-  props<{ user: User  }>()
+  props<{ user: User }>()
 );
 
 export const AuthenticationFailure = createAction(
   '[Login] Authentication Failure',
   props<{ error: any }>()
+);
+
+export const ClearState = createAction(
+  '[Login] Clear state'
 );

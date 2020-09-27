@@ -18,7 +18,7 @@ export class LoginEffects {
       concatMap((props) => this.apiService.authentication(props.user).pipe(
         map(response => {
           if (response.status === 200)
-            return LoginActions.AuthenticationSuccess({ user: response.body.user })
+            return LoginActions.AuthenticationSuccess({ user: response.body.user });
         }),
         catchError(error => of(LoginActions.AuthenticationFailure({ error }))))
       )

@@ -46,6 +46,6 @@ export class SignInComponent implements OnInit {
   }
 
   get input() { 
-    return this.form.get('required'); }
+    return this.form.get('username'); }
 
 }

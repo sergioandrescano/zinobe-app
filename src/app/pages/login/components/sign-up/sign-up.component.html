@@ -1,4 +1,4 @@
-<form class="text-center border border-light p-5">
+<!-- <form class="text-center border border-light p-5">
   <p class="h4 mb-4">Registrarse</p>
   <div class="form-row mb-4">
     <div class="col">
@@ -21,4 +21,52 @@
   </small>
   <button mdbBtn color="info" block="true" class="my-4" type="submit">Registrarse</button>
   <button mdbBtn color="info" block="true" class="my-4" type="button" (click)="login.emit()">Volver al Login</button>
-</form>
+</form> -->
+
+<mdb-card>
+  <mdb-card-body>
+    <!-- Material form register -->
+    <form [formGroup]="cardForm">
+      <p class="h4 text-center py-4">Registro</p>
+
+      <!-- Material input text -->
+      <div class="md-form">
+        <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+        <input type="text" id="materialFormCardNameEx" formControlName="materialFormCardNameEx" class="form-control" mdbInput>
+        <label for="materialFormCardNameEx" class="font-weight-light">Your name</label>
+      </div>
+
+      <!-- Material input email -->
+      <div class="md-form">
+        <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+        <input type="email" id="materialFormCardEmailEx" formControlName="materialFormCardEmailEx" class="form-control" mdbInput>
+        <label for="materialFormCardEmailEx" class="font-weight-light">Your email</label>
+      </div>
+
+      <!-- Material input email -->
+      <div class="md-form">
+        <mdb-icon fas icon="exclamation-triangle" class="prefix grey-text"></mdb-icon>
+        <input type="email" id="materialFormCardConfirmEx" formControlName="materialFormCardConfirmEx" class="form-control" mdbInput>
+        <label for="materialFormCardConfirmEx" class="font-weight-light">Confirm your email</label>
+      </div>
+
+      <!-- Material input password -->
+      <div class="md-form">
+        <mdb-icon icon="lock" class="prefix grey-text"></mdb-icon>
+        <input type="password" id="materialFormCardPasswordEx" formControlName="materialFormCardPasswordEx" class="form-control"
+          mdbInput>
+        <label for="materialFormCardPasswordEx" class="font-weight-light">Your password</label>
+      </div>
+
+      <div class="text-center py-4 mt-3">
+        <button mdbBtn color="cyan" class="waves-light" type="submit" mdbWavesEffect>Register</button>
+      </div>
+    </form>
+    <div class="modal-footer mx-5 pt-3 mb-1">
+      <p class="font-small grey-text d-flex justify-content-end">
+          <a class="blue-text ml-1" (click)="login.emit()"> Volver al login</a>
+      </p>
+  </div>
+    <!-- Material form register -->
+  </mdb-card-body>
+</mdb-card>

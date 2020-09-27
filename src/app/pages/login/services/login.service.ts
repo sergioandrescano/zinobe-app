@@ -18,6 +18,9 @@ export class LoginService {
     this.store.dispatch(fromActions.Authentication({user}));
   }
 
+  clearState(){
+    this.store.dispatch(fromActions.ClearState());
+  }
   
   getState(): Observable<fromReducer.State>{
     return this.store.pipe(select(fromSelectors.getLoginState));

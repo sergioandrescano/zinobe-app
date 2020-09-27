@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private service: LoginService) { }
 
   ngOnInit(): void {
+    this.service.clearState();
     this.isLoading$ = this.service.getIsLoading();
   }
 
