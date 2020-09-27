@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/core/models/user.model';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +11,16 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   public signUp = false;
+  public isLoading$: Observable<boolean>;
 
-  constructor() { }
+  constructor(private service: LoginService) { }
 
   ngOnInit(): void {
+    this.isLoading$ = this.service.getIsLoading();
+  }
+
+  authentication(user: User) {
+    this.service.authentication(user);
   }
 
 }

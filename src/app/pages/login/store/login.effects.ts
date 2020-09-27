@@ -1,30 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
+import { catchError, map, concatMap, tap } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
 
 import * as LoginActions from './login.actions';
+import { ApiService } from 'src/app/core/services/api.service';
+import { Router } from '@angular/router';
 
 
 
 @Injectable()
 export class LoginEffects {
 
-  loadLogins$ = createEffect(() => {
-    return this.actions$.pipe( 
-
-      ofType(LoginActions.loadLogins),
-      concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
-          map(data => LoginActions.loadLoginsSuccess({ data })),
-          catchError(error => of(LoginActions.loadLoginsFailure({ error }))))
+  authentication$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(LoginActions.Authentication),
+      concatMap((props) => this.apiService.authentication(props.user).pipe(
+        map(response => {
+          if (response.status === 200)
+            return LoginActions.AuthenticationSuccess({ user: response.body.user })
+        }),
+        catchError(error => of(LoginActions.AuthenticationFailure({ error }))))
       )
     );
   });
 
+  authenticationSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(LoginActions.AuthenticationSuccess),
+      tap(() => this.router.navigate(['home']))
+    ),
+    { dispatch: false }
+  );
 
 
-  constructor(private actions$: Actions) {}
+
+  constructor(private actions$: Actions, private apiService: ApiService, private router: Router) { }
 
 }
