@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row justify-content-center p-5">
+        <div class="col-6" *ngIf="!signUp">
+            <app-loader *ngIf="isLoading$ | async"></app-loader>
+            <app-sign-in [invalidLogged]="invalidLogged$ | async" (register)="signUp = !signUp" (create)="authentication($event)"></app-sign-in>
+        </div>
+        <div class="col-8" *ngIf="signUp">
+            <app-sign-up [userCreated]="customerCreated$ | async" (login)="signUp = !signUp" (create)="createCustomer($event)"></app-sign-up>
+        </div>
+    </div>
+</div>

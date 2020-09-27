@@ -1,0 +1,52 @@
+<mdb-card>
+  <mdb-card-body>
+    <app-alert type="success" message="Usuario creado correctamente" *ngIf="userCreated"></app-alert>
+    <form [formGroup]="form">
+      <p class="h4 text-center py-4">Registro</p>
+
+      <div class="md-form">
+        <input type="text" id="name" formControlName="name" class="form-control" mdbInput mdbValidate>
+        <label for="name" class="font-weight-light">Nombres</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
+      </div>
+
+      <div class="md-form">
+        <input type="text" id="documentNumber" formControlName="documentNumber" class="form-control" mdbInput mdbValidate>
+        <label for="documentNumber" class="font-weight-light">Número de documento</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
+      </div>
+
+      <div class="md-form">
+        <input type="email" id="email" formControlName="email" class="form-control" mdbInput mdbValidate>
+        <label for="email" class="font-weight-light">Correo electrónico</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
+      </div>
+
+      <div class="md-form">
+        <input type="text" id="username" formControlName="username" class="form-control" mdbInput mdbValidate>
+        <label for="username" class="font-weight-light">Usuario</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
+      </div>
+
+      <div class="md-form">
+        <input type="password" id="password" formControlName="password" class="form-control" mdbInput mdbValidate>
+        <label for="password" class="font-weight-light">Contraseña</label>
+        <mdb-error *ngIf="input.invalid && (input.dirty || input.touched)"></mdb-error>
+        <mdb-success *ngIf="input.valid && (input.dirty || input.touched)"></mdb-success>
+      </div>
+
+      <div class="text-center py-4 mt-3">
+        <button mdbBtn color="cyan" class="waves-light" type="submit" mdbWavesEffect (click)="submitForm()">Register</button>
+      </div>
+    </form>
+    <div class="modal-footer mx-5 pt-3 mb-1">
+      <p class="font-small grey-text d-flex justify-content-end">
+        <a class="blue-text ml-1" (click)="login.emit()"> Volver al login</a>
+      </p>
+    </div>
+  </mdb-card-body>
+</mdb-card>
