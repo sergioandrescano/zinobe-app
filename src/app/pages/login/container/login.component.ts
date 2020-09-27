@@ -12,12 +12,16 @@ export class LoginComponent implements OnInit {
 
   public signUp = false;
   public isLoading$: Observable<boolean>;
+  public invalidLogged$: Observable<boolean>;
+  public customerCreated$: Observable<boolean>;
 
   constructor(private service: LoginService) { }
 
   ngOnInit(): void {
     this.service.clearState();
     this.isLoading$ = this.service.getIsLoading();
+    this.invalidLogged$ = this.service.getInvalidLogged();
+    this.customerCreated$ = this.service.getCustomerCreated();
   }
 
   authentication(user: User) {

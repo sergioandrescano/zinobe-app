@@ -21,6 +21,10 @@ export class LoginService {
   createCustomer(user: User){
     this.store.dispatch(fromActions.CreateCustomer({user}));
   }
+  
+  clearCustomerCreated(){
+    this.store.dispatch(fromActions.ClearCustomerCreated());
+  }
 
   clearState(){
     this.store.dispatch(fromActions.ClearState());
@@ -40,5 +44,13 @@ export class LoginService {
   
   getIsLogged(): Observable<boolean>{
     return this.store.pipe(select(fromSelectors.getIsLogged));
+  }
+  
+  getInvalidLogged(): Observable<boolean>{
+    return this.store.pipe(select(fromSelectors.getInvalidLogged));
+  }
+  
+  getCustomerCreated(): Observable<boolean>{
+    return this.store.pipe(select(fromSelectors.getCustomerCreated));
   }
 }

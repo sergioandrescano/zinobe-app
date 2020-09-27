@@ -23,3 +23,13 @@ export const getError = createSelector(
     (state: fromReducer.State) => state.error
 );
 
+export const getInvalidLogged = createSelector(
+    getLoginState,
+    (state: fromReducer.State) => state.invalidLogged
+);
+
+export const getCustomerCreated = createSelector(
+    getLoginState,
+    (state: fromReducer.State) => state.customerCreated
+);
+

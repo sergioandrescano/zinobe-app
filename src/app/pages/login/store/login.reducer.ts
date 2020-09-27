@@ -6,6 +6,8 @@ export const loginFeatureKey = 'login';
 
 export interface State {
   user: User,
+  invalidLogged: boolean,
+  customerCreated: boolean,
   isLoading: boolean,
   islogged: boolean,
   error: any
@@ -13,6 +15,8 @@ export interface State {
 
 export const initialState: State = {
   user: null,
+  invalidLogged: false,
+  customerCreated: false,
   isLoading: false,
   islogged: false,
   error: null
@@ -33,9 +37,17 @@ export const reducer = createReducer(
     isLoading: false,
     islogged: true
   })),
-  on(LoginActions.AuthenticationFailure, (state, { error }) => ({
+  on(LoginActions.AuthenticationFailure, (state) => ({
     ...state,
     user: null,
+    invalidLogged: true,
+    isLoading: false,
+    islogged: false,
+  })),
+  on(LoginActions.AuthenticationError, (state, { error }) => ({
+    ...state,
+    user: null,
+    invalidLogged: true,
     isLoading: false,
     islogged: false,
     error
@@ -47,15 +59,21 @@ export const reducer = createReducer(
   on(LoginActions.CreateCustomerSuccess, (state, { user }) => ({
     ...state,
     user,
+    customerCreated: true,
     isLoading: false,
     islogged: false
   })),
   on(LoginActions.CreateCustomerFailure, (state, { error }) => ({
     ...state,
     user: null,
+    customerCreated: false,
     isLoading: false,
     islogged: false,
     error
+  })),
+  on(LoginActions.ClearCustomerCreated, (state) => ({
+    ...state,
+    customerCreated: false
   })),
 
 );

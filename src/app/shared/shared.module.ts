@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { LoaderModule } from './components/loader/loader.module';
+import { AlertModule } from './components/alert/alert.module';
 
 
 
@@ -15,7 +16,8 @@ import { LoaderModule } from './components/loader/loader.module';
     FormsModule,
     ReactiveFormsModule,
     MDBBootstrapModule,
-    LoaderModule
+    LoaderModule,
+    AlertModule
   ]
 })
 export class SharedModule { }

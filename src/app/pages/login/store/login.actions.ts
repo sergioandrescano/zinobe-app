@@ -12,7 +12,11 @@ export const AuthenticationSuccess = createAction(
 );
 
 export const AuthenticationFailure = createAction(
-  '[Login] Authentication Failure',
+  '[Login] Authentication Failure'
+);
+
+export const AuthenticationError = createAction(
+  '[Login] Authentication Error',
   props<{ error: any }>()
 );
 
@@ -29,6 +33,10 @@ export const CreateCustomerSuccess = createAction(
 export const CreateCustomerFailure = createAction(
   '[Login] CreateCustomer Failure',
   props<{ error: any }>()
+);
+
+export const ClearCustomerCreated = createAction(
+  '[Login] ClearCustomerCreated'
 );
 
 export const ClearState = createAction(

@@ -1,5 +1,6 @@
 <mdb-card>
   <mdb-card-body>
+    <app-alert type="success" message="Usuario creado correctamente" *ngIf="userCreated"></app-alert>
     <form [formGroup]="form">
       <p class="h4 text-center py-4">Registro</p>
 

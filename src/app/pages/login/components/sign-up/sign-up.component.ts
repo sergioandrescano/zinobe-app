@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/core/models/user.model';
 
@@ -8,6 +8,8 @@ import { User } from 'src/app/core/models/user.model';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  
+  @Input() public userCreated: boolean;
 
   @Output() public login = new EventEmitter();
   @Output() public create = new EventEmitter<User>();
@@ -24,7 +26,7 @@ export class SignUpComponent implements OnInit {
       documentNumber: [{ value: null, disabled: false }, [Validators.required]]
     });
   }
-  
+
   submitForm(): void {
     if (this.form.valid) {
       this.create.emit(this.form.value);
@@ -40,7 +42,7 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  
-  get input() { 
-    return this.form.get('username'); }
+  get input() {
+    return this.form.get('username');
+  }
 }

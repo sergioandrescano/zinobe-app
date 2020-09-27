@@ -19,8 +19,10 @@ export class LoginEffects {
         map(response => {
           if (response.status === 200)
             return LoginActions.AuthenticationSuccess({ user: response.body.user });
+          else
+            return LoginActions.AuthenticationFailure();
         }),
-        catchError(error => of(LoginActions.AuthenticationFailure({ error }))))
+        catchError(error => of(LoginActions.AuthenticationError({ error }))))
       )
     );
   });
@@ -32,6 +34,8 @@ export class LoginEffects {
         map(response => {
           if (response.status === 201)
             return LoginActions.CreateCustomerSuccess({ user: response.body.user });
+          else
+            return LoginActions.CreateCustomerFailure({ error: null });
         }),
         catchError(error => of(LoginActions.CreateCustomerFailure({ error }))))
       )
@@ -42,6 +46,17 @@ export class LoginEffects {
     this.actions$.pipe(
       ofType(LoginActions.AuthenticationSuccess),
       tap(() => this.router.navigate(['home']))
+    ),
+    { dispatch: false }
+  );
+
+  authenticationFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(LoginActions.AuthenticationFailure),
+      tap(() => {
+
+        this.router.navigate(['home']);
+      })
     ),
     { dispatch: false }
   );
