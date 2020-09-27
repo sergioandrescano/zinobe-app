@@ -25,4 +25,9 @@ export class ApiService {
   createCustomer(user: User): Observable<HttpResponse<any>> {
     return this.httpClient.post<any>(`${this.baseUrl}/users`, user, { observe: 'response' });
   }
+
+  getBankById(id: string): Observable<HttpResponse<any>> {
+    return this.httpClient.get<any>(`${this.baseUrl}/banks/${id}`, { observe: 'response' });
+  }
+  
 }

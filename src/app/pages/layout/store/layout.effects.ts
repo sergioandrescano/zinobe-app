@@ -5,12 +5,22 @@ import { EMPTY, of } from 'rxjs';
 
 import * as LayoutActions from './layout.actions';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/core/services/api.service';
 
 
 
 @Injectable()
 export class LayoutEffects {
 
+  loadBank$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(LayoutActions.loadBank),
+      concatMap((props) => this.apiService.getBankById(props.id).pipe(
+        map(response => LayoutActions.loadBankSuccess({ bank: response.body.bank })),
+        catchError(error => of(LayoutActions.loadBankFailure({ error }))))
+      )
+    );
+  });
 
   closeSession$ = createEffect(() =>
     this.actions$.pipe(
@@ -21,6 +31,6 @@ export class LayoutEffects {
 
 
 
-  constructor(private actions$: Actions, private router: Router) { }
+  constructor(private actions$: Actions, private router: Router, private apiService: ApiService) { }
 
 }

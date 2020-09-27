@@ -1,16 +1,18 @@
 import { createAction, props } from '@ngrx/store';
+import { Bank } from 'src/app/core/models/bank.model';
 
-export const loadLayouts = createAction(
-  '[Layout] Load Layouts'
+export const loadBank = createAction(
+  '[Layout] Load Bank',
+  props<{ id: string }>()
 );
 
-export const loadLayoutsSuccess = createAction(
-  '[Layout] Load Layouts Success',
-  props<{ data: any }>()
+export const loadBankSuccess = createAction(
+  '[Layout] Load Bank Success',
+  props<{ bank: Bank }>()
 );
 
-export const loadLayoutsFailure = createAction(
-  '[Layout] Load Layouts Failure',
+export const loadBankFailure = createAction(
+  '[Layout] Load Bank Failure',
   props<{ error: any }>()
 );
 

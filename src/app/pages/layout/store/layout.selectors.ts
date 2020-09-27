@@ -8,3 +8,8 @@ export const getIsLoading = createSelector(
     (state: fromReducer.State) => state.isLoading
 );
 
+export const getBank = createSelector(
+    getLayoutState,
+    (state: fromReducer.State) => state.bank
+);
+
